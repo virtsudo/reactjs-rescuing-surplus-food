@@ -1,0 +1,257 @@
+
+.vheight-100 {
+  min-height: 100vh;
+}
+
+.navbar-padding {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.below-nav {
+  padding-top: 5rem;
+}
+
+.below-nav1 {
+  padding-top: 4rem;
+}
+
+.projects-title {
+  margin-top: 2rem;
+}
+
+.nav-bar {
+  max-width: 1700px;
+  margin: 1%;
+}
+
+.nav-link {
+  color: white;
+  text-decoration: none;
+}
+
+.ava {
+  width: 32px;
+  height: 32px;
+  opacity: 0.9;
+}
+
+.log-in {
+  color: #155724;
+  background-color: #d4edda;
+  border-color: #c3e6cb;
+}
+
+.login {
+  min-width: 400px;
+  min-height: 375px;
+  width: 25%;
+  margin: auto;
+}
+
+.login-header {
+  text-align: center;
+  color: #155724;
+  min-height: 50px;
+  margin-top: 25px;
+}
+
+.login-entry {
+  min-height: 100px;
+}
+
+.login-message {
+  margin-top: 2%;
+  color: red;
+  font-weight: normal;
+}
+
+.form-control:focus{
+  border-color: #c3e6cb;
+  box-shadow: 0 0 0 0.1rem #d4edda;
+}
+
+.establishment-header {
+  text-align: center;
+  color: #155724;
+  min-height: 50px;
+  margin-top: 25px;
+}
+
+.table-hover tbody tr:hover td {
+  background: seagreen;
+  color: white;
+}
+
+.table tbody tr td {
+  background-color: white;
+  --bs-table-striped-bg: #ebffeb;
+  border-color: #c3e6cb;
+}
+
+.establishment-main {
+  margin: auto;
+}
+
+.bags-side {
+  position: absolute;
+  left: 0;
+  width: 350px;
+}
+
+.list-group-item {
+  background-color: transparent;
+}
+
+.list-group-item.active {
+  background-color: #155724;
+  color: white;
+  border-color: #c3e6cb;
+}
+
+.list-group-item-action:hover {
+  background-color: seagreen;
+  color: white;
+}
+
+.bags-main {
+  position: absolute;
+  left: 0;
+  margin-left: 350px;
+}
+
+.bags-header {
+  margin-top: 25px;
+  margin-bottom: 25px;
+  color: #155724;
+}
+
+.bags-list {
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.bags-card {
+  width: 300px;
+  height: 200px;
+  color: #155724;
+  background-color: white;
+  border-color: #c3e6cb;
+}
+
+.bags-card-footer {
+  background-color: #ebffeb;
+}
+
+.bags-card-danger {
+  width: 300px;
+  height: 200px;
+  color: #58151c;
+  background-color: white;
+  border-color: #f1aeb5;
+}
+
+.bags-card-footer-danger {
+  background-color: #ffebeb;
+}
+
+.bags-modal {
+  border-color: #c3e6cb;
+  color: #155724;
+}
+
+.bags-modal-entry {
+  width: 112px;
+}
+
+.card-button {
+  position: relative;
+  left: 55rem;
+  bottom: 0px;
+  width: 400px;
+  font-size: 20px;
+}
+
+.card-button1 {
+  position: relative;
+  left: 48rem;
+  bottom: 0px;
+  width: 400px;
+  font-size: 20px;
+}
+
+.card-button2 {
+  position: fixed;
+  left: 10px;
+  top: 150px;
+  width: 200px;
+  font-size: 20px;
+}
+
+.card-button3 {
+  position: fixed;
+  left: 10px;
+  top: 150px;
+  width: 166px;
+  font-size: 20px;
+}
+
+.shopping-card-header {
+  margin-top: 25px;
+  margin-bottom: 25px;
+  text-align: center;
+  color: #155724;
+}
+
+.shopping-card-main {
+  margin: auto;
+}
+
+.shopping-card-item {
+  font-size: large;
+  border-color: #c3e6cb;
+  background-color: #ebffeb;
+  color: #155724;
+}
+
+.shopping-card-item:disabled {
+  font-size: large;
+  border-color: #c3e6cb;
+  background-color: #ebffeb;
+  color: #155724;
+  --bs-btn-disabled-opacity: 1;
+}
+
+.shopping-card-badge {
+  font-size: 10px;
+}
+
+.shopping-card-alert {
+  font-size: 12px;
+  width: 300px;
+  height: 10px;
+  margin-bottom: 10px;
+  margin-left: 20px;
+  color: red;
+}
+
+.reserved-main {
+  margin-top: 100px;
+}
+
+.reserved-delete {
+  position: absolute;
+  right: 8px;
+  top: 8px;
+  font-size: 25px;
+  color: red;
+}
+
+.page-not-fount-main {
+  margin-top: 100px;
+  height: 300px;
+}
+
+.page-not-fount-link {
+  color: #590000;
+}

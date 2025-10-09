@@ -1,0 +1,54 @@
+@APIURL=http://localhost:3000/api
+
+// LOGIN
+POST {{APIURL}}/login
+Content-Type: application/json
+
+{
+  "username": "john.doe@polito.it",
+  "password": "password"
+}
+
+###
+
+POST {{APIURL}}/logout
+Content-Type: application/json
+
+###
+
+GET {{APIURL}}/schedules/1
+Content-Type: application/json
+
+###
+
+POST {{APIURL}}/bags-selected
+Content-Type: application/json
+
+{
+  "id_list": [1, 2, 3]
+}
+
+###
+
+PUT {{APIURL}}/bags/1
+Content-Type: application/json
+
+{
+  "type": "Surprise",
+  "size": "Small",
+  "content": "2 kg Surplus Pasta, 1 L Olive Oil, 500 g Tomato Sauce",
+  "state": "available",
+  "price": "12"
+}
+
+###
+
+PUT {{APIURL}}/schedules/39
+Content-Type: application/json
+
+{
+  "bagId": "39",
+  "userId": null,
+  "establishmentId": "7",
+  "pickupTime": null
+}

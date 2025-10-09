@@ -1,0 +1,10 @@
+john.doe@example.com      | pa$$word
+jane.smith@example.com    | StrongPass123
+robert.jones@example.com  | RandomPwd456
+emily.white@example.com   | P@ssword789
+alex.green@example.com    | DemoUser2022
+lisa.johnson@example.com  | TestPwd567
+andrea.rossi@example.com  | Secret12345
+carla.bianchi@example.com | Pass123word!
+mark.thompson@example.com | 2Secure4U@
+sophie.martin@example.com | P@ssw0rdDemo
