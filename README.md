@@ -71,4 +71,4 @@ ___
 ## Run Commmand
 
 cd ./client && npm install && npm audit fix --force && npm run dev[build]
-cd ./server && npm install && npm audit fix --force && nodemon ./index.js
+cd ./server && npm install && npm audit fix --force && nodemon ./index.ts

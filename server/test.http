@@ -5,13 +5,33 @@ POST {{APIURL}}/login
 Content-Type: application/json
 
 {
-  "username": "john.doe@polito.it",
-  "password": "password"
+  "username": "john.doe@example.com",
+  "password": "pa$$word"
 }
 
 ###
 
 POST {{APIURL}}/logout
+Content-Type: application/json
+
+###
+
+GET {{APIURL}}/establishments
+Content-Type: application/json
+
+###
+
+GET {{APIURL}}/schedules
+Content-Type: application/json
+
+###
+
+GET {{APIURL}}/establishments/1
+Content-Type: application/json
+
+###
+
+GET {{APIURL}}/bags/1
 Content-Type: application/json
 
 ###

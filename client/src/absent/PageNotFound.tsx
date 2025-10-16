@@ -1,7 +1,7 @@
 import {Alert} from 'react-bootstrap';
 import {Link} from 'react-router-dom';
 
-function PageNotFound() {
+export function PageNotFound() {
 
     return <Alert variant='danger' className='page-not-fount-main'>
         <h1>Page not found...</h1>
@@ -9,5 +9,3 @@ function PageNotFound() {
     </Alert>
 
 }
-
-export {PageNotFound}

@@ -1,67 +1,95 @@
-import {Establishment, Bag, Schedule} from "./surplus.js";
+import type {Bag, Establishment, Schedule, User} from "../model/AppModel.ts";
 
 const APIURL = 'http://localhost:3000/api';
 
-async function userLogin(username, password) {
+export async function userLogin(username: string, password: string): Promise<User | string> {
     try {
         const response = await fetch(APIURL+'/login', {
-           method: 'POST',
-           headers: {'content-type': 'application/json; charset=utf-8'},
-           body: JSON.stringify({
-               "username": username,
-               "password": password
-           }),
-           credentials: 'include'
+            method: 'POST',
+            headers: {'content-type': 'application/json; charset=utf-8'},
+            body: JSON.stringify({
+                "username": username,
+                "password": password
+            }),
+            credentials: 'include'
         });
         if (response.status===401) return 'unauthorized';
         else if (!response.ok) throw Error(response.statusText);
         if (response.headers.get('content-type')!=='application/json; charset=utf-8') throw new TypeError(`Expected JSON, got ${response.headers.get('Content-Type')}`);
-        return (await response.json());
-    } catch (err) {throw new Error(err.message);}
+        return (await response.json() as User);
+    } catch (err) {
+        if (err instanceof Error) throw err;
+        throw new Error(String(err));
+    }
 }
 
-async function userLogout(){
+export async function userLogout(): Promise<boolean> {
     try {
         const response = await fetch(APIURL+'/logout', {
             method: 'POST',
             credentials: 'include'
         })
-        if (!response) throw Error(response.statusText);
+        if (!response.ok) {throw Error(response.statusText);}
         if (response.headers.get('content-type')!=='application/json; charset=utf-8') throw new TypeError(`Expected JSON, got ${response.headers.get('Content-Type')}`);
         return true;
-    } catch (err) {throw new Error(err.message);}
+    } catch (err) {
+        if (err instanceof Error) throw err;
+        throw new Error(String(err));
+    }
 }
 
-async function listEstablishments() {
+export async function listEstablishments(): Promise<Array<Establishment>> {
     try {
         const response = await fetch(APIURL+'/establishments');
         if (!response.ok) throw Error(response.statusText);
         if (response.headers.get('content-type')!=='application/json; charset=utf-8') throw new TypeError(`Expected JSON, got ${response.headers.get('Content-Type')}`);
-        return ((await response.json()).map(e=>(new Establishment(e.id, e.name, e.address, e.phoneNumber, e.category))));
-    } catch (err) {throw new Error(err.message);}
+        return ((await response.json()).map((e: Establishment)=>({id: e.id, name: e.name, address: e.address, phoneNumber: e.phoneNumber, category: e.category} as Establishment)));
+    } catch (err) {
+        if (err instanceof Error) throw err;
+        throw new Error(String(err));
+    }
 }
 
-async function listBagsByEstablishment(establishmentId){
+export async function getEstablishment(establishmentId: number): Promise<Establishment | string> {
+    try {
+        const response = await fetch(APIURL+`/establishments/${establishmentId}`, {credentials: 'include'});
+        if (response.status===401) return 'unauthorized';
+        else if (!response.ok) throw Error(response.statusText);
+        if (response.headers.get('content-type')!=='application/json; charset=utf-8') throw new TypeError(`Expected JSON, got ${response.headers.get('Content-Type')}`);
+        return (await response.json() as Establishment);
+    } catch (err) {
+        if (err instanceof Error) throw err;
+        throw new Error(String(err));
+    }
+}
+
+export async function listBagsByEstablishment(establishmentId: number): Promise<Array<Bag> | string> {
     try {
         const response = await fetch(APIURL+`/bags/${establishmentId}`, {credentials: 'include'});
         if (response.status===401) return 'unauthorized';
         else if (!response.ok) throw Error(response.statusText);
         if (response.headers.get('content-type')!=='application/json; charset=utf-8') throw new TypeError(`Expected JSON, got ${response.headers.get('Content-Type')}`);
-        return ((await response.json()).map(b=>(new Bag(b.id, b.type, b.size, b.content, b.state, b.price, b.establishmentName))));
-    } catch (err) {throw new Error(err.message);}
+        return ((await response.json()).map((b: Bag)=>({id: b.id, type: b.type, size: b.size, content: b.content, state: b.state, price: b.price, establishmentName: b.establishmentName} as Bag)));
+    } catch (err) {
+        if (err instanceof Error) throw err;
+        throw new Error(String(err));
+    }
 }
 
-async function listBagsByUser(userId) {
+export async function listBagsByUser(userId: number): Promise<Array<Bag> | string> {
     try {
         const response = await fetch(APIURL+`/${userId}/reserved-bags`, {credentials: 'include'});
         if (response.status===401) return 'unauthorized';
         else if (!response.ok) throw Error(response.statusText);
         if (response.headers.get('content-type')!=='application/json; charset=utf-8') throw new TypeError(`Expected JSON, got ${response.headers.get('Content-Type')}`);
-        return ((await response.json()).map(b=>(new Bag(b.id, b.type, b.size, b.content, b.state, b.price, b.establishmentName))));
-    } catch (err) {throw new Error(err.message);}
+        return ((await response.json()).map((b: Bag)=>({id: b.id, type: b.type, size: b.size, content: b.content, state: b.state, price: b.price, establishmentName: b.establishmentName} as Bag)));
+    } catch (err) {
+        if (err instanceof Error) throw err;
+        throw new Error(String(err));
+    }
 }
 
-async function listBags(bagIdList) {
+export async function listBags(bagIdList: Array<number>): Promise<Array<Bag> | string> {
     try {
         const response = await fetch(APIURL+'/bags-selected', {
             method: 'POST',
@@ -74,22 +102,26 @@ async function listBags(bagIdList) {
         if (response.status===401) return 'unauthorized';
         else if (!response.ok) throw Error(response.statusText);
         if (response.headers.get('content-type')!=='application/json; charset=utf-8') throw new TypeError(`Expected JSON, got ${response.headers.get('Content-Type')}`);
-        return ((await response.json()).map(b=>(new Bag(b.id, b.type, b.size, b.content, b.state, b.price, b.establishmentName))));
-    } catch (err) {throw new Error(err.message);}
+        return ((await response.json()).map((b: Bag)=>({id: b.id, type: b.type, size: b.size, content: b.content, state: b.state, price: b.price, establishmentName: b.establishmentName} as Bag)));
+    } catch (err) {
+        if (err instanceof Error) throw err;
+        throw new Error(String(err));
+    }
 }
 
-async function getSchedule(scheduleId) {
+export async function listSchedules(): Promise<Array<Schedule>> {
     try {
-        const response = await fetch(APIURL+`/schedules/${scheduleId}`, {credentials: 'include'});
-        if (response.status===401) return 'unauthorized';
-        else if (!response.ok) throw Error(response.statusText);
+        const response = await fetch(APIURL+'/schedules');
+        if (!response.ok) throw Error(response.statusText);
         if (response.headers.get('content-type')!=='application/json; charset=utf-8') throw new TypeError(`Expected JSON, got ${response.headers.get('Content-Type')}`);
-        const schedule = await response.json();
-        return (new Schedule(schedule.id, schedule.bagId, schedule.userId, schedule.establishmentId, schedule.pickupTime));
-    } catch (err) {throw new Error(err.message);}
+        return ((await response.json()).map((s: Schedule)=>({id: s.id, bagId: s.bagId, userId: s.userId, establishmentId: s.establishmentId, pickupTime: s.pickupTime} as Schedule)));
+    } catch (err) {
+        if (err instanceof Error) throw err;
+        throw new Error(String(err));
+    }
 }
 
-async function updateBag(id, type, size, content, state, price) {
+export async function updateBag(id: number, type: string, size: string, content: string[] | null, state: string, price: number): Promise<boolean | string> {
     try {
         const response = await fetch(APIURL+`/bags/${id}`, {
             method: 'PUT',
@@ -108,10 +140,13 @@ async function updateBag(id, type, size, content, state, price) {
         else if (!response.ok) throw Error(response.statusText);
         if (response.headers.get('content-type')!=='application/json; charset=utf-8') throw new TypeError(`Expected JSON, got ${response.headers.get('Content-Type')}`);
         return true;
-    } catch (err) {throw new Error(err.message);}
+    } catch (err) {
+        if (err instanceof Error) throw err;
+        throw new Error(String(err));
+    }
 }
 
-async function updateSchedule(id, bagId, userId, establishmentId, pickupTime) {
+export async function updateSchedule(id: number, bagId: number, userId: number | null, establishmentId: number, pickupTime: string | null): Promise<boolean | string> {
     try {
         const response = await fetch(APIURL+`/schedules/${id}`, {
             method: 'PUT',
@@ -128,8 +163,9 @@ async function updateSchedule(id, bagId, userId, establishmentId, pickupTime) {
         else if (response.status===409) return 'failed on update';
         else if (!response.ok) throw Error(response.statusText);
         if (response.headers.get('content-type')!=='application/json; charset=utf-8') throw new TypeError(`Expected JSON, got ${response.headers.get('Content-Type')}`);
-        return response;
-    } catch (err) {throw new Error(err.message);}
+        return true;
+    } catch (err) {
+        if (err instanceof Error) throw err;
+        throw new Error(String(err));
+    }
 }
-
-export {userLogin, userLogout, listEstablishments, listBagsByEstablishment, listBagsByUser, getSchedule, listBags, updateBag, updateSchedule};
