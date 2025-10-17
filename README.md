@@ -4,7 +4,7 @@ A web app built with **React (TypeScript)** frontend + simple **TypesScript** ba
 
 ---
 
-# Server side
+# ⚙️ Server side
 
 ## API Server
 
@@ -37,7 +37,7 @@ A web app built with **React (TypeScript)** frontend + simple **TypesScript** ba
 - Table `bags` - contains 60 bags with type/size/content/state/price
 - Table `schedules` - contains 60 schedules bagId, userId, establishmentId, pickupTime.
 
-# Client side
+# ⚙️ Client side
 
 
 ## React Client Application Routes
@@ -65,10 +65,12 @@ A web app built with **React (TypeScript)** frontend + simple **TypesScript** ba
 ![Screenshot](./img/shopping_card.png)
 ![Screenshot](./img/reserved_bags.png)
 
-## Users Credential Samples
+## 👤 Users Credential Samples
 
-- john.doe@example.com, pa$$word 
-- jane.smith@example.com, StrongPass123
+| Email | Password |
+|--------|-----------|
+| john.doe@example.com | pa$$word |
+| jane.smith@example.com | StrongPass123 |
 ___
 ## Run Commmand
 
