@@ -74,5 +74,16 @@ A web app built with **React (TypeScript)** frontend + simple **TypesScript** ba
 ___
 ## Run Commmand
 
-cd ./client && npm install && npm audit fix --force && npm run dev[build]
-cd ./server && npm install && npm audit fix --force && nodemon ./index.ts
+```bash
+cd ./client && 
+npm install && 
+npm audit fix --force && 
+npm run dev
+```
+
+```bash
+cd ./server && 
+npm install &&
+npm audit fix --force &&
+nodemon ./index.ts
+```
