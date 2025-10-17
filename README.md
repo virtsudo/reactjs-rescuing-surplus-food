@@ -1,5 +1,9 @@
 # Rescuing Surplus Food (ReactJS)
 
+A web app built with **React (TypeScript)** frontend + simple **TypesScript** backend
+
+---
+
 # Server side
 
 ## API Server
